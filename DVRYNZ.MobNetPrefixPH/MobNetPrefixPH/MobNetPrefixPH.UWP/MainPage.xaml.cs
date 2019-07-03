@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Prism;
+using Prism.Ioc;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,7 +23,12 @@ namespace MobNetPrefixPH.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new MobNetPrefixPH.App());
+            LoadApplication(new MobNetPrefixPH.App(new UwpInitializer()));
         }
+    }
+
+    public class UwpInitializer : IPlatformInitializer
+    {
+        public void RegisterTypes(IContainerRegistry containerRegistry) { }
     }
 }
